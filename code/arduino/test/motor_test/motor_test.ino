@@ -39,18 +39,19 @@ void setMotorSpeed(unsigned char mode, unsigned char speed){
 
 //앞으로
 void forward(){
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
-}
 
-//뒤로
-void backward(){
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
+}
+
+//뒤로
+void backward(){
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
 }
 
 
@@ -71,7 +72,7 @@ void loop() {
   forward();
   delay(1000); //1초동안 동작함
   //뒤로가기
-  backward();
+ /* backward();
   delay(1000);
   //왼쪽으로 돌기
 
@@ -100,7 +101,7 @@ void loop() {
   delay(1000);
   backward();
   delay(1000);
-
+*/
 
 
 }
