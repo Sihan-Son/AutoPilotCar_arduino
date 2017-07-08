@@ -30,6 +30,7 @@ void loop() {
   {
     steer_servo.write(85);
   }
+  delay(500);
   
   
 }
