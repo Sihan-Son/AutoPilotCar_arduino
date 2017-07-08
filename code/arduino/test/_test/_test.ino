@@ -44,7 +44,7 @@ void setMotorSpeed(unsigned char mode, unsigned char speed){
 
 //앞으로
 void forward(){
-  myservo.write(90);
+  myservo.write(85);
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, LOW);
@@ -53,7 +53,7 @@ void forward(){
 
 //뒤로
 void backward(){
-    myservo.write(90);
+    myservo.write(85);
 
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
@@ -72,7 +72,7 @@ void stopMotor(){
 void turnLeft()
 {
   forward();
-  myservo.write(120);
+  myservo.write(60);
   delay(1000);
 }
 
@@ -86,7 +86,7 @@ void turnRight()
 void turnLeft_R()
 {
   backward();
-  myservo.write(120);
+  myservo.write(60);
   delay(1000);
 }
 
@@ -105,7 +105,7 @@ void loop() {
   forward();
 
   delay(3000); //1초동안 동작함
-
+ setMotorSpeed(ALL_CH, 200); 
   turnLeft();
   turnLeft_R();
   forward();
@@ -113,7 +113,7 @@ void loop() {
   
 
 
-/*
+
   //속도 조절 확인
   setMotorSpeed(ALL_CH, 200);  
   forward();
@@ -138,7 +138,7 @@ void loop() {
   delay(1000);
   backward();
   delay(1000);
-*/
+
 
 
 }

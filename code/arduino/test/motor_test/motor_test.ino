@@ -72,7 +72,7 @@ void loop() {
   forward();
   delay(1000); //1초동안 동작함
   //뒤로가기
- /* backward();
+  backward();
   delay(1000);
   //왼쪽으로 돌기
 
@@ -101,7 +101,7 @@ void loop() {
   delay(1000);
   backward();
   delay(1000);
-*/
+
 
 
 }
