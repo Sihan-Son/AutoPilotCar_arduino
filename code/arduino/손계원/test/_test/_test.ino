@@ -1,6 +1,6 @@
 #include <Servo.h>
 
-Servo myservo;
+Servo Steer_Servo;
 
 //모터 PIN 설정
 #define IN1 6 //forward
@@ -24,7 +24,7 @@ void setup() {
 
   pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
-  myservo.attach(2);
+  Steer_Servo.attach(2);
 
 }
 
