@@ -1,7 +1,12 @@
+#include <SoftwareSerial.h>
 #include <Servo.h>
 
-//Servo Steer_Servo;
-Servo myservo;
+int TxPin = 2;
+int RxPin = 3;
+
+Servo Steer_Servo;
+SoftwareSerial BTSerial(TxPin, RxPin); 
+
 //모터 PIN 설정
 #define IN1 6 //forward
 #define IN2 7 //backward
@@ -16,7 +21,7 @@ Servo myservo;
 #define ALL_CH 2
 
 void setup() {
-  // put your setup code here, to run once:
+   BTSerial.begin(9600);
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
   pinMode(IN3, OUTPUT);
@@ -24,16 +29,9 @@ void setup() {
 
   pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
-  //Steer_Servo.attach(2);
-  myservo.attach(8);
+  Steer_Servo.attach(8);
 
 }
-
-// 속도 설정
-// mode : 각 모터를 선택적으로 변경 가능
-// CH1, CH2, ALL_CH
-// speed : 0 ~ 255 까지 가능
-// 60 이하로는 모터가 거의 동작안함.
 
 void setMotorSpeed(unsigned char mode, unsigned char speed){
 
@@ -45,7 +43,7 @@ void setMotorSpeed(unsigned char mode, unsigned char speed){
 
 //앞으로
 void forward(){
-  myservo.write(85);
+  Steer_Servo.write(85);
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, LOW);
@@ -54,7 +52,7 @@ void forward(){
 
 //뒤로
 void backward(){
-    myservo.write(85);
+   //-------------------------------- Steer_Servo.write(85);
 
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
@@ -73,73 +71,55 @@ void stopMotor(){
 void turnLeft()
 {
   forward();
-  myservo.write(60);
+  Steer_Servo.write(60);
   delay(1000);
 }
 
 void turnRight()
 {
   forward();
-  myservo.write(120);
+  Steer_Servo.write(120);
   delay(1000);
 }
 
 void turnLeft_R()
 {
   backward();
-  myservo.write(60);
+  Steer_Servo.write(60);
   delay(1000);
 }
 
 void turnRight_R()
 {
   backward();
-  myservo.write(120);
+  Steer_Servo.write(120);
   delay(1000);
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
-  //최대 속도로 동작
-  setMotorSpeed(ALL_CH, 255);
-
-  forward();
-
-  delay(3000); //1초동안 동작함
- setMotorSpeed(ALL_CH, 200); 
-  turnLeft();
-  turnLeft_R();
-  forward();
-  delay(1000);
   
+ if (BTSerial.available())
+  {
+   char cmd  = BTSerial.read();
+    
+    if(cmd == 'l') 
+    {
+        Steer_Servo.write(60);
+    }
+    else if(cmd == 'r')
+    {
+      Steer_Servo.write(110);
+    }
+    else if(cmd == "c")
+    {
+      Steer_Servo.write(85);
+    }
+    else if(cmd == "b")
+    {
+       setMotorSpeed(ALL_CH, 255); 
 
-
-
-  //속도 조절 확인
-  setMotorSpeed(ALL_CH, 200);  
-  forward();
-  delay(1000);
-  backward();
-  delay(1000);
-
-  setMotorSpeed(ALL_CH, 150);  
-  forward();
-  delay(1000);
-  backward();
-  delay(1000);
-  
-  setMotorSpeed(ALL_CH, 100);  
-  forward();
-  delay(1000);
-  backward();
-  delay(1000);
-  
-  setMotorSpeed(ALL_CH, 80);  
-  forward();
-  delay(1000);
-  backward();
-  delay(1000);
-
-
-
+      backward();
+      delay(1000);
+    }
+  }
 }
