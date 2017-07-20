@@ -3,14 +3,14 @@
 //Servo Steer_Servo;
 Servo myservo;
 //모터 PIN 설정
-#define IN1 6 //forward
-#define IN2 7 //backward
+#define IN1 5 //forward
+#define IN2 6 //backward
 
-#define IN3 5
-#define IN4 4
+#define IN3 7
+#define IN4 6
 
-#define ENA 12 //in1,2
-#define ENB 11 // in3,4
+#define ENA 4 //in1,2
+#define ENB 8 // in3,4
 
 //모터 번호
 #define ALL_CH 2
@@ -25,7 +25,7 @@ void setup() {
   pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
   //Steer_Servo.attach(2);
-  myservo.attach(8);
+  myservo.attach(2);
 
 }
 
