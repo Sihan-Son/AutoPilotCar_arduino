@@ -30,14 +30,14 @@ void setSpeed(unsigned speed)
 
 void forward()
 {
-  Steer_Servo.write(85);
+  Steer_Servo.write(80);
   digitalWrite(C_Motor_F,HIGH);
   digitalWrite(C_Motor_B,LOW);
 }
 
 void backward()
 {
-  Steer_Servo.write(85);
+  Steer_Servo.write(80);
   digitalWrite(C_Motor_F,LOW);
   digitalWrite(C_Motor_B,HIGH);
 }
@@ -51,16 +51,16 @@ void stop(int time)
 
 void turn_Right()
 {
-  setSpeed(150);
+  setSpeed(120);
   digitalWrite(C_Motor_F,HIGH);
   digitalWrite(C_Motor_B,LOW);  
-  Steer_Servo.write(120);
+  Steer_Servo.write(110);
   delay(1000);
 }
 
 void turn_Left()
 {
-  setSpeed(150);
+  setSpeed(120);
   digitalWrite(C_Motor_F,HIGH);
   digitalWrite(C_Motor_B,LOW);
   Steer_Servo.write(60);
@@ -68,7 +68,7 @@ void turn_Left()
 }
 void loop() {
   // put your main code here, to run repeatedly:
-  setSpeed(200);
+  setSpeed(150);
   if(BT.available())
   {
     char value = (char)BT.read();
