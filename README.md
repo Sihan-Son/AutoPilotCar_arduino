@@ -17,3 +17,8 @@ For arduino
 가이드는 현재 1.4버전입니다.
 
 아두이노로 프로젝트 성공이후 raspberryPi3를 이용 할 계획입니다.
+
+contact
+email : kaiser8566@gmail.com
+telegram : Sihan_K
+kakaotalk : sihan
