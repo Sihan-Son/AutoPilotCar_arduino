@@ -19,6 +19,9 @@ For arduino
 아두이노로 프로젝트 성공이후 raspberryPi3를 이용 할 계획입니다.
 
 contact
+
 email : kaiser8566@gmail.com
 telegram : Sihan_K
 kakaotalk : sihan
+
+메일이 제일 늦을 거에요
