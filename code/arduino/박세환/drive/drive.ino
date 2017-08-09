@@ -41,9 +41,9 @@ int getDistance(char TRIG, char ECHO)
 
   delay(10);
 
-  digitalWrite(TRIG ,LOW);
+  digitalWrite(TRIG , LOW);
 
-  int distance = pulseln(ECHO, HIGH)/58.2;
+  int distance = pulseln(ECHO, HIGH) / 58.2;
 
   return distance;
 }
@@ -53,8 +53,8 @@ int getDistance(char TRIG, char ECHO)
 void loop()
 {
 
-  
-  if(C_Dis>30)
+
+  if (C_Dis > 30)
   {
     digitalWrite(Motor_F, HIGH);
     analogWrite(3, 255);
@@ -62,7 +62,7 @@ void loop()
 
   delay(10)
 
-  else if(C_Dis=<30&&L_Dis<=10)
+  else if (C_Dis = < 30 && L_Dis <= 10)
   {
     digitalWrite(Motor_B, HIGH);
     analogWrite(3, 255);
@@ -73,7 +73,7 @@ void loop()
 
   delay(10)
 
-  else if(C_Dis=<30&&L_Dis>30)
+  else if (C_Dis = < 30 && L_Dis > 30)
   {
     digitalWrite(Motor_B, HIGH);
     analogWrite(3, 255);

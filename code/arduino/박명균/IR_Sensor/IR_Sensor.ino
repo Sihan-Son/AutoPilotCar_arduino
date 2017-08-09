@@ -4,10 +4,10 @@ void setup()
   pinMode(sensorpin, INPUT);
 }
 
-void loop() 
+void loop()
 {
-  val=digitalRead(sesorpin);
-  if(val==HIGH)
+  val = digitalRead(sesorpin);
+  if (val == HIGH)
   {
     digitalWrite (Led, Low);
   }

@@ -35,16 +35,16 @@ void setup() {
 // speed : 0 ~ 255 까지 가능
 // 60 이하로는 모터가 거의 동작안함.
 
-void setMotorSpeed(unsigned char mode, unsigned char speed){
+void setMotorSpeed(unsigned char mode, unsigned char speed) {
 
 
-    analogWrite(ENA, speed);
-    analogWrite(ENB, speed);    
-  
+  analogWrite(ENA, speed);
+  analogWrite(ENB, speed);
+
 }
 
 //앞으로
-void forward(){
+void forward() {
   myservo.write(85);
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
@@ -53,8 +53,8 @@ void forward(){
 }
 
 //뒤로
-void backward(){
-    myservo.write(85);
+void backward() {
+  myservo.write(85);
 
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
@@ -64,11 +64,11 @@ void backward(){
 
 
 //스톱
-void stopMotor(){
+void stopMotor() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, HIGH);  
+  digitalWrite(IN4, HIGH);
 }
 void turnLeft()
 {
@@ -99,42 +99,42 @@ void turnRight_R()
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
+  // put your main code here, to run repeatedly:
   //최대 속도로 동작
   setMotorSpeed(ALL_CH, 255);
 
   forward();
 
   delay(3000); //1초동안 동작함
- setMotorSpeed(ALL_CH, 200); 
+  setMotorSpeed(ALL_CH, 200);
   turnLeft();
   turnLeft_R();
   forward();
   delay(1000);
-  
+
 
 
 
   //속도 조절 확인
-  setMotorSpeed(ALL_CH, 200);  
+  setMotorSpeed(ALL_CH, 200);
   forward();
   delay(1000);
   backward();
   delay(1000);
 
-  setMotorSpeed(ALL_CH, 150);  
+  setMotorSpeed(ALL_CH, 150);
   forward();
   delay(1000);
   backward();
   delay(1000);
-  
-  setMotorSpeed(ALL_CH, 100);  
+
+  setMotorSpeed(ALL_CH, 100);
   forward();
   delay(1000);
   backward();
   delay(1000);
-  
-  setMotorSpeed(ALL_CH, 80);  
+
+  setMotorSpeed(ALL_CH, 80);
   forward();
   delay(1000);
   backward();

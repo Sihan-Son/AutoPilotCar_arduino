@@ -29,16 +29,16 @@ void setup() {
 // speed : 0 ~ 255 까지 가능
 // 60 이하로는 모터가 거의 동작안함.
 
-void setMotorSpeed(unsigned char mode, unsigned char speed){
+void setMotorSpeed(unsigned char mode, unsigned char speed) {
 
 
-    analogWrite(ENA, speed);
-    analogWrite(ENB, speed);    
-  
+  analogWrite(ENA, speed);
+  analogWrite(ENB, speed);
+
 }
 
 //앞으로
-void forward(){
+void forward() {
 
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
@@ -47,7 +47,7 @@ void forward(){
 }
 
 //뒤로
-void backward(){
+void backward() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, HIGH);
@@ -56,15 +56,15 @@ void backward(){
 
 
 //스톱
-void stopMotor(){
+void stopMotor() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, HIGH);  
+  digitalWrite(IN4, HIGH);
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
+  // put your main code here, to run repeatedly:
   //최대 속도로 동작
   setMotorSpeed(ALL_CH, 255);
 
@@ -78,25 +78,25 @@ void loop() {
 
 
   //속도 조절 확인
-  setMotorSpeed(ALL_CH, 200);  
+  setMotorSpeed(ALL_CH, 200);
   forward();
   delay(1000);
   backward();
   delay(1000);
 
-  setMotorSpeed(ALL_CH, 150);  
+  setMotorSpeed(ALL_CH, 150);
   forward();
   delay(1000);
   backward();
   delay(1000);
-  
-  setMotorSpeed(ALL_CH, 100);  
+
+  setMotorSpeed(ALL_CH, 100);
   forward();
   delay(1000);
   backward();
   delay(1000);
-  
-  setMotorSpeed(ALL_CH, 80);  
+
+  setMotorSpeed(ALL_CH, 80);
   forward();
   delay(1000);
   backward();

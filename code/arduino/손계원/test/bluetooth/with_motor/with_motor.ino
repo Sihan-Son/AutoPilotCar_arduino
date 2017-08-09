@@ -5,7 +5,7 @@ int TxPin = 2;
 int RxPin = 3;
 
 Servo Steer_Servo;
-SoftwareSerial BTSerial(TxPin, RxPin); 
+SoftwareSerial BTSerial(TxPin, RxPin);
 
 //모터 PIN 설정
 #define IN1 6 //forward
@@ -21,7 +21,7 @@ SoftwareSerial BTSerial(TxPin, RxPin);
 #define ALL_CH 2
 
 void setup() {
-   BTSerial.begin(9600);
+  BTSerial.begin(9600);
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
   pinMode(IN3, OUTPUT);
@@ -33,16 +33,16 @@ void setup() {
 
 }
 
-void setMotorSpeed(unsigned char mode, unsigned char speed){
+void setMotorSpeed(unsigned char mode, unsigned char speed) {
 
 
-    analogWrite(ENA, speed);
-    analogWrite(ENB, speed);    
-  
+  analogWrite(ENA, speed);
+  analogWrite(ENB, speed);
+
 }
 
 //앞으로
-void forward(){
+void forward() {
   Steer_Servo.write(85);
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
@@ -51,8 +51,8 @@ void forward(){
 }
 
 //뒤로
-void backward(){
-   //-------------------------------- Steer_Servo.write(85);
+void backward() {
+  //-------------------------------- Steer_Servo.write(85);
 
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
@@ -62,11 +62,11 @@ void backward(){
 
 
 //스톱
-void stopMotor(){
+void stopMotor() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, HIGH);  
+  digitalWrite(IN4, HIGH);
 }
 void turnLeft()
 {
@@ -97,26 +97,26 @@ void turnRight_R()
 }
 
 void loop() {
-  
- if (BTSerial.available())
+
+  if (BTSerial.available())
   {
-   char cmd  = BTSerial.read();
-    
-    if(cmd == 'l') 
+    char cmd  = BTSerial.read();
+
+    if (cmd == 'l')
     {
-        Steer_Servo.write(60);
+      Steer_Servo.write(60);
     }
-    else if(cmd == 'r')
+    else if (cmd == 'r')
     {
       Steer_Servo.write(110);
     }
-    else if(cmd == "c")
+    else if (cmd == "c")
     {
       Steer_Servo.write(85);
     }
-    else if(cmd == "b")
+    else if (cmd == "b")
     {
-       setMotorSpeed(ALL_CH, 255); 
+      setMotorSpeed(ALL_CH, 255);
 
       backward();
       delay(1000);

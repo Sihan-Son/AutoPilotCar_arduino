@@ -2,17 +2,17 @@
 #include<Servo.h>
 Servo Steer_Servo;
 Servo UW_Servo;
-#define TRIG 9 
-#define ECHO 8 
+#define TRIG 9
+#define ECHO 8
 #define L_Motor_F 6
 #define L_Motor_B 5
 #define L_Motor_V A0
 #define R_Motor_F 4
 #define R_Motor_B 3
 #define R_Motor_V A1
-void setup() 
+void setup()
 {
-  Serial.begin(9600);   
+  Serial.begin(9600);
   pinMode(L_Motor_F, OUTPUT);
   pinMode(L_Motor_B, OUTPUT);
   pinMode(R_Motor_F, OUTPUT);
@@ -24,32 +24,32 @@ void setup()
   Steer_Servo.attach(12);
   UW_Servo.attach(7);
 }
-void loop() 
+void loop()
 {
-  float duration,distance,a,b,c,d;
+  float duration, distance, a, b, c, d;
   digitalWrite(TRIG, HIGH);
   delay(10);
   digitalWrite(TRIG, LOW);
 
   duration = pulseIn(ECHO, HIGH);
   distance = ((float)(340 * duration) / 10000) / 2;
-  
+
   Serial.print("\nDIstance : ");
   Serial.println(distance);
   Serial.println("forward");
   forward();
-  
-  if(distance <15)
+
+  if (distance < 15)
   {
-    Serial.println("stop"); 
+    Serial.println("stop");
     stop();
     UW_Servo.write(170);
-    delay(500); 
+    delay(500);
     digitalWrite(TRIG, HIGH);
     delay(10);
     digitalWrite(TRIG, LOW);
-    b = pulseIn(ECHO, HIGH); 
-    a = ((float)(340 * b) / 10000) / 2;  
+    b = pulseIn(ECHO, HIGH);
+    a = ((float)(340 * b) / 10000) / 2;
     Serial.print(a);
     Serial.println("cm");
     UW_Servo.write(15);
@@ -57,26 +57,26 @@ void loop()
     digitalWrite(TRIG, HIGH);
     delay(10);
     digitalWrite(TRIG, LOW);
-    d = pulseIn(ECHO, HIGH); 
-    c = ((float)(340 * d) / 10000) / 2;  
+    d = pulseIn(ECHO, HIGH);
+    c = ((float)(340 * d) / 10000) / 2;
     Serial.print(c);
     Serial.println("cm");
-    UW_Servo.write(90); 
+    UW_Servo.write(90);
     stop();
     {
-      if(a<c)
+      if (a < c)
       {
-       Serial.println("backward");
-       backward();
-       Serial.println("turn_Left");
-       turn_Left(); 
+        Serial.println("backward");
+        backward();
+        Serial.println("turn_Left");
+        turn_Left();
       }
       else
       {
-       Serial.println("backward");
-       backward();
-       Serial.println("turn_Right");
-       turn_Right();
+        Serial.println("backward");
+        backward();
+        Serial.println("turn_Right");
+        turn_Right();
       }
     }
   }
@@ -85,8 +85,8 @@ void loop()
     Serial.println("forward");
     forward();
   }
- }
-     
+}
+
 void forward()
 {
   Steer_Servo.write(84);
@@ -104,7 +104,7 @@ void backward()
   digitalWrite(L_Motor_B, HIGH);
   digitalWrite(R_Motor_F, LOW);
   digitalWrite(R_Motor_B, HIGH);
-  analogWrite(L_Motor_V,255);
+  analogWrite(L_Motor_V, 255);
   analogWrite(R_Motor_V, 255);
   delay(1000);
 }
