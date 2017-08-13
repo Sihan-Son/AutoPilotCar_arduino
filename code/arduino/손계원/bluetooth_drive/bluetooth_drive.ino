@@ -2,8 +2,8 @@
 #include <Servo.h>
 
 //bluetooth
-int Tx = 2;
-int Rx = 3;
+#define Tx 2
+#define Rx 3
 SoftwareSerial BT(Tx, Rx);
 
 //Servo
