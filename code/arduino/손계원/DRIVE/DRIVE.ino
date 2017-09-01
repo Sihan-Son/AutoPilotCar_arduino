@@ -51,9 +51,10 @@ void stop(int time)
 
 void turn_Right()
 {
-	setSpeed(170);
+	setSpeed(130);
 	digitalWrite(C_Motor_F, HIGH);
 	digitalWrite(C_Motor_B, LOW);
+	delay(500);
 	Steer_Servo.write(150);
 	delay(1000);
 
@@ -63,13 +64,14 @@ void turn_Right()
 
 void turn_Left()
 {
-	setSpeed(170);
+	setSpeed(130);
 	digitalWrite(C_Motor_F, HIGH);
 	digitalWrite(C_Motor_B, LOW);
+	delay(500);
 	Steer_Servo.write(30);
 	delay(1000);
 
-	Steer_Servo.write(90);
+	Steer_Servo.write(100);
 	delay(500);
 }
 
@@ -77,8 +79,39 @@ int i;
 
 void loop()
 {
-	setSpeed(255);
+	setSpeed(200);
 
+	if(BT.available())
+	{
+		char value = (char)BT.read();
+
+		if (value == 'l')
+		{
+			turn_Left();
+			delay(1000);
+		}
+		if (value == 'r')
+		{
+			turn_Right();
+			delay(1000);
+		}
+		if (value == 'f')
+		{
+			forward();
+			delay(1000);
+		}
+		if (value == 'b')
+		{
+			backward();
+			delay(1000);
+		}
+		if (value == 's')
+		{
+			stop(1000);
+		}
+	}
+
+	/*
 	Serial.println("f");
 	forward();
 	delay(1000);
@@ -92,6 +125,6 @@ void loop()
 	
 	Serial.println("r");
 	turn_Right();
-	
+	*/
 	
 }
