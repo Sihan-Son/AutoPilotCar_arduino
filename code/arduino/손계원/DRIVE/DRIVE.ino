@@ -79,7 +79,7 @@ int i;
 
 void loop()
 {
-	setSpeed(200);
+	setSpeed(130);
 
 	if(BT.available())
 	{
